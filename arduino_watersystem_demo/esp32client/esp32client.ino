@@ -3,27 +3,27 @@
 
 #include <WiFi.h>
 #include <WebSocketsClient.h>
-#include "SoftwareSerial.h"
+//#include "SoftwareSerial.h"
 #include <ArduinoJson.h>
 
 const char* wlan_ssid             = "xiomi";
-const char* wlan_password         = "porc2232";
+const char* wlan_password         = "miaumiau";
 const char* ws_host               = "127.0.0.1";
 const int   ws_port               = 8080;
 
 String roomName = "lala";
 String username = "esp32";
 
-SoftwareSerial s1(34, 35); // RX, TX
 
-String softwareSerialData = "";
-char character;
-
-// base URL for SockJS (websocket) connection
-// The complete URL will look something like this(cf. http://sockjs.github.io/sockjs-protocol/sockjs-protocol-0.3.3.html#section-36):
 // ws://<ws_host>:<ws_port>/<ws_baseurl>/<3digits>/<randomstring>/websocket
-// For the default config of Spring's SockJS/STOMP support, the default base URL is "/socketentry/".
-const char* ws_baseurl            = "/chat/"; // don't forget leading and trailing "/" !!!
+const char* ws_baseurl            = "/chat/";
+
+//SoftwareSerial Serial(34, 35); // RX, TX
+
+// String softwareSerialData = "";
+// char character;
+
+
 
 
 WebSocketsClient webSocket;
@@ -32,13 +32,14 @@ WebSocketsClient webSocket;
 void setup() {
 
   Serial.begin(115200);
-  s1.begin(9600);
-  connectToWifi();
+  Serial.begin(9600);
+ 
   connectToWebSocket();
 
 }
 
 void loop() {
+  connectToWifi();
   webSocket.loop();
   serialGetData();
 }
@@ -59,7 +60,7 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
       {
 
         String text = (char*) payload;
-        if (payload[0] == 'h') {
+        if (payload[0] == 'b') {
 
           Serial.println("Heartbeat!");
 
@@ -95,9 +96,9 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
 
 String str;
 void serialGetData() {
-  if (s1.available() > 0)
+  if (Serial.available() > 0)
   {
-    str = s1.readStringUntil('\n');
+    str = Serial.readStringUntil('\n');
     if (str.length() > 0) {
       str =  str.substring(0, str.length() - 1);
       str.replace("\\", "");
@@ -135,7 +136,7 @@ void processJsonData(String _received) {
   String username = obj["username"];
   Serial.println(receivedMessage);
   // send data to another arduino
-  s1.println(receivedMessage);
+  Serial.println(receivedMessage);
 
 }
 
@@ -188,7 +189,5 @@ void connectToWebSocket() {
 
   // connect to websocket
   webSocket.begin(ws_host, ws_port, socketUrl);
-  webSocket.setExtraHeaders();
-  //    webSocket.setExtraHeaders("foo: I am so funny\r\nbar: not"); // some headers, in case you feel funny
   webSocket.onEvent(webSocketEvent);
 }
