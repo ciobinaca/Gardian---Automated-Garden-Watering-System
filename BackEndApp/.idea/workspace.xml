@@ -10,27 +10,25 @@
       <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/PlantProfileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Alert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Plant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/PlantProfile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/WateringSchedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Repository/AlertReppository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Repository/PlantProfileRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Repository/PlantRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Repository/WateringScheduleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/PlantProfileService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/PlantProfileServiceImplementation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/PlantService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Service/PlantServiceImplementation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/WebSocketHandler/WebSocketHandler.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/BackEndAppApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/WebSocketConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/WebSocketSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Controller/PlantProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/MessageController/WebSocketHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Model/Alert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Model/Plant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Model/PlantProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Model/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Model/WateringSchedule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Repository/AlertReppository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Repository/PlantProfileRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Repository/PlantRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Repository/WateringScheduleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Service/PlantProfileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Service/PlantProfileServiceImplementation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Service/PlantService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/Service/PlantServiceImplementation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backendapp/config/WebSocketConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/com/example/backendapp/BackEndAppApplicationTests.java" afterDir="false" />
     </list>
@@ -38,6 +36,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -54,7 +55,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2k1UYGnHS9dak0w9TENo76PuP6Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -71,7 +72,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GardianWateringSystem/BackEnd",
+    "last_opened_file_path": "D:/GardianWateringSystem/Folder nou/Gardian-Automated-Garden-Watering-System/BackEndApp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,6 +90,12 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.backendapp" />
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="BackEndAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
@@ -115,7 +122,14 @@
       <workItem from="1722547975740" duration="6491000" />
       <workItem from="1722961468119" duration="11101000" />
       <workItem from="1723067950486" duration="74000" />
-      <workItem from="1723070562719" duration="12933000" />
+      <workItem from="1723070562719" duration="14035000" />
+      <workItem from="1723109620900" duration="1362000" />
+      <workItem from="1723481010156" duration="11014000" />
+      <workItem from="1723576242948" duration="11123000" />
+      <workItem from="1723615044275" duration="5676000" />
+      <workItem from="1724232437840" duration="1728000" />
+      <workItem from="1724696918072" duration="6749000" />
+      <workItem from="1724843374601" duration="14271000" />
     </task>
     <servers />
   </component>
@@ -132,5 +146,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/backendapp/Controller/PlantProfileController.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/backendapp/Service/PlantProfileServiceImplementation.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
