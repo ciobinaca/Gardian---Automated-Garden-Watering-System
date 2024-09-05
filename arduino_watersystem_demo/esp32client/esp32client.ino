@@ -7,7 +7,7 @@
 #include <ArduinoJson.h>
 
 const char* wlan_ssid             = "xiomi";
-const char* wlan_password         = "miaumiau";
+const char* wlan_password         = "porc2232";
 const char* ws_host               = "127.0.0.1";
 const int   ws_port               = 8080;
 
@@ -189,5 +189,7 @@ void connectToWebSocket() {
 
   // connect to websocket
   webSocket.begin(ws_host, ws_port, socketUrl);
+  webSocket.setExtraHeaders();
+  //    webSocket.setExtraHeaders("foo: I am so funny\r\nbar: not"); // some headers, in case you feel funny
   webSocket.onEvent(webSocketEvent);
 }
