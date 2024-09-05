@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.page-background {
+  position: relative;
+  height: 200vh; /* Full viewport height */
+  width: 100%;
+  overflow: hidden; /* Ensure nothing spills out */
+}
+
+.page-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP37XcBAe_EhD7utFaeizQxeNDSZ8t5pc28A&s');
+  background-size: contain;
+  background-position: center;
+  filter: blur(5px); /* Adjust the blur level */
+  z-index: -1; /* Ensure the background is behind the content */
+}

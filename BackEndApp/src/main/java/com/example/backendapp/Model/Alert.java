@@ -16,10 +16,6 @@ public class Alert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long alertId;
-
-//    @ManyToOne
-//    @JoinColumn(name = "profile_id", referencedColumnName = "profileId")
-//    private PlantProfile plantProfile;
     private Integer profile_id;
     private String alertType;
     private String alertMessage;

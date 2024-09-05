@@ -4,28 +4,8 @@ import { Box, Typography, Card, CardContent, Grid, LinearProgress, Button, Circu
 import { styled } from '@mui/system';
 import Calendar from 'react-calendar'; 
 import 'react-calendar/dist/Calendar.css'; 
-
-
-const mockPlantData = {
-  id: 1,
-  name: 'Angelique Pink Tulip',
-  location: 'Front Yard',
-  needsWater: true,
-  imageUrl: 'https://cdn11.bigcommerce.com/s-i7i23daso6/images/stencil/1280x1280/products/12276/18429/Tulip_Angelique_0002670_2__75432.1629189655.jpg?c=1', 
-  sensors: {
-    moisture: 75, // Example moisture level percentage
-    temperature: 22, // Example temperature in Celsius
-    light: 60, // Example light level percentage
-  },
-  statistics: {
-    daysSinceWatered: 3,
-    averageGrowthRate: '1.2 cm/day',
-  },
-  wateringFrequency: 'Daily', 
-  preferredSunlight: 'Full Sun',
-  soilType: 'Loamy',
-  careTips: 'Water daily in the morning, ensure full sunlight exposure.',
-};
+import axios from 'axios';
+import 'D:/GardianWateringSystem/LastVersion/FrontEnd/src/App.css';
 
 const StyledCard = styled(Card)({
   maxWidth: 400,
@@ -33,19 +13,42 @@ const StyledCard = styled(Card)({
 });
 
 const PlantProfile = () => {
-  const { plantId } = useParams(); 
-  const [plantData, setPlantData] = useState(mockPlantData);
+  let { profileId } = useParams();
+  // const plantId = useParams(); 
+  const [plantProfileData, setPlantProfileData]= useState(null);
+  const [plantData, setPlantData] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [wateringDates, setWateringDates] = useState([]);
+  const [error, setError] = useState(null);
+
+ const getPlantProfileData = ()=>{
+    axios.get(`http://localhost:8080/PlantProfile/${profileId}`)
+    .then((response) => {
+     setPlantProfileData(response.data); 
+     console.log(response.data);})
+
+  }
 
   useEffect(() => {
+    getPlantProfileData();
+  }, [profileId]);
 
-    setTimeout(() => {
-      setPlantData(mockPlantData); 
-      setLoading(false);
-      calculateWateringDates(mockPlantData.wateringFrequency);
-    }, 1000);
-  }, [plantId]);
+  useEffect(() => {
+    if (plantProfileData) {
+      axios.get(`http://localhost:8080/Plant/${plantProfileData.plantId}`)
+        .then((response) => {
+          setPlantData(response.data);
+          console.log("Plant Data:", response.data);
+          setLoading(false);
+          calculateWateringDates(response.data.wateringFrequency);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError(err);
+          setLoading(false);
+        });
+    }
+  }, [plantProfileData]); 
 
   const calculateWateringDates = (frequency) => {
     const today = new Date();
@@ -78,30 +81,32 @@ const PlantProfile = () => {
   if (loading) return <CircularProgress />;
 
   return (
-    <Box p={6}>
+    <div className="page-background" >
+    <Box 
+    p={7} paddingLeft={30}>
       <Typography variant="h4" gutterBottom align="Left" paddingLeft='100px' >
-        {plantData.name}
+        {plantData.name} 
       </Typography>
       <Grid container spacing={-3} paddingTop="15px">
         <Grid item xs={12} md={5.5}>
           <StyledCard>
             <CardContent>
               <img
-                src={plantData.imageUrl}
-                alt={plantData.name}
+                 src={plantData.image}
+                 alt={plantData.name}
                 style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
               />
               <Typography variant="h6" mt={2}>
-                Location: {plantData.location}
+                 Location: {plantData.location}
               </Typography>
               <Typography variant="body1">
-                Needs Water: {plantData.needsWater ? 'Yes' : 'No'}
+                {/* Needs Water: {plantData.needsWater ? 'Yes' : 'No'}  */}
               </Typography>
               <Typography variant="body2">
-                Watering Frequency: {plantData.wateringFrequency}
+               Watering Frequency: {plantData.waterFrequency} 
               </Typography>
               <Typography variant="body2">
-                Preferred Sunlight: {plantData.preferredSunlight}
+                Preferred Sunlight: {plantData.lightRequirements} 
               </Typography>
               <Typography variant="body2">
                 Soil Type: {plantData.soilType}
@@ -115,7 +120,7 @@ const PlantProfile = () => {
                 Care Tips
               </Typography>
               <Typography variant="body2" gutterBottom>
-                {plantData.careTips}
+                {/* {plantData.careTips} */}
               </Typography>
             </CardContent>
           </StyledCard>
@@ -123,35 +128,113 @@ const PlantProfile = () => {
         </Grid>
         <Grid item xs={30} md={4}>
           <StyledCard >
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Sensor Status
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                Moisture Level
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={plantData.sensors.moisture}
-                sx={{ mb: 2 }}
-              />
-              <Typography variant="body2" gutterBottom>
-                Temperature ({plantData.sensors.temperature}°C)
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={(plantData.sensors.temperature / 50) * 100}
-                sx={{ mb: 2 }}
-              />
-              <Typography variant="body2" gutterBottom>
-                Light Level
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={plantData.sensors.light}
-                sx={{ mb: 2 }}
-              />
-            </CardContent>
+          <CardContent>
+      <Typography variant="h6" gutterBottom>
+        Sensor Status
+      </Typography>
+      
+      {/* Moisture Level */}
+      <Typography variant="body2" gutterBottom>
+        Moisture Level
+      </Typography>
+      <Box sx={{ position: 'relative', mb: 2 }}>
+        <LinearProgress
+          variant="determinate"
+          value={plantData.moisture}
+          sx={{ height: 10 }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -25,
+           // left: `${plantData.optimalSoilMoistureMin}%`,
+            transform: 'translateX(-50%)',
+            color: 'text.secondary',
+          }}
+        >
+          {plantData.optimalSoilMoistureMin}%
+        </Box>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -25,
+            left: `100%`,
+            transform: 'translateX(-50%)',
+            color: 'text.secondary',
+          }}
+        >
+          {plantData.optimalSoilMoistureMax}%
+        </Box>
+      </Box>
+      
+      {/* Temperature */}
+      <Typography variant="body2" gutterBottom>
+        Temperature ({plantData.temperature}°C)
+      </Typography>
+      <Box sx={{ position: 'relative', mb: 2 }}>
+        <LinearProgress
+          variant="determinate"
+          value={(plantData.temperature / plantData.temperatureMax) * 100}
+          sx={{ height: 10 }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -25,
+            left: `${(plantData.temperatureMin / plantData.temperatureMax) * 100}%`,
+            transform: 'translateX(-50%)',
+            color: 'text.secondary',
+          }}
+        >
+          {plantData.temperatureMin}°C
+        </Box>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -25,
+            left: `${(plantData.temperatureMax / plantData.temperatureMax) * 100}%`,
+            transform: 'translateX(-50%)',
+            color: 'text.secondary',
+          }}
+        >
+          {plantData.temperatureMax}°C
+        </Box>
+      </Box>
+      
+      {/* Light Level */}
+      <Typography variant="body2" gutterBottom>
+        Light Level
+      </Typography>
+      <Box sx={{ position: 'relative', mb: 2 }}>
+        <LinearProgress
+          variant="determinate"
+          value={plantData.lightRequirements}
+          sx={{ height: 10 }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -25,
+            left: `${(plantData.minLight / 100) * 100}%`,
+            transform: 'translateX(-50%)',
+            color: 'text.secondary',
+          }}
+        >
+          {/* {plantData.minLight}% */}
+        </Box>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -25,
+            // left: `${(plantData.maxLight / 100) * 100}%`,
+            transform: 'translateX(-50%)',
+            color: 'text.secondary',
+          }}
+        >
+          {plantData.maxLight}%
+        </Box>
+      </Box>
+    </CardContent>
           </StyledCard>
           <Grid item xs={12}>
           <StyledCard>
@@ -160,10 +243,10 @@ const PlantProfile = () => {
                 Plant Statistics
               </Typography>
               <Typography variant="body2" gutterBottom>
-                Days Since Watered: {plantData.statistics.daysSinceWatered}
+                {/* Days Since Watered: {plantData.statistics.daysSinceWatered} */}
               </Typography>
               <Typography variant="body2" gutterBottom>
-                Average Growth Rate: {plantData.statistics.averageGrowthRate}
+                {/* Average Growth Rate: {plantData.statistics.averageGrowthRate} */}
               </Typography>
             </CardContent>
           </StyledCard>
@@ -201,6 +284,7 @@ const PlantProfile = () => {
         </Grid>
       </Grid>
     </Box>
+    </div>
   );
 };
 

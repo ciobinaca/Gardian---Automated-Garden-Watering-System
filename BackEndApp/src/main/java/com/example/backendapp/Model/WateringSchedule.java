@@ -15,10 +15,6 @@ import java.sql.Timestamp;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long scheduleId;
-
-//        @ManyToOne
-//        @JoinColumn(name = "profile_id", referencedColumnName = "profileId")
-//        private PlantProfile plantProfile;
         private Integer profile_id;
         private Timestamp nextWateringDate;
         private Timestamp lastWateringDate;

@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import background from "./sign_up.jpg"
+import background from 'D:/GardianWateringSystem/LastVersion/FrontEnd/src/resources/sign_up.jpg';
 import MyPlants from './MyPlants';
 import {useNavigate} from 'react-router-dom';
 import { FaLeaf } from 'react-icons/fa';  

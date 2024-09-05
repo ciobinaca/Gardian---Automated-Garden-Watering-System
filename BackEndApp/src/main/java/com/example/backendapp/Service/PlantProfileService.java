@@ -5,7 +5,8 @@ import com.example.backendapp.Model.PlantProfile;
 import java.util.List;
 
 public interface PlantProfileService {
-    
+
+    PlantProfile fetchPlantProfileById(Long plantProfileId);
     PlantProfile createPlantProfile(PlantProfile plantProfile);
 
     List<PlantProfile> fetchPlantProfileList();

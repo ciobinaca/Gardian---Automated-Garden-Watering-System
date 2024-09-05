@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import background from "./sign_up.jpg"
+import background from 'D:/GardianWateringSystem/LastVersion/FrontEnd/src/resources/sign_up.jpg'
 import {useNavigate} from 'react-router-dom';
 import { FaLeaf } from 'react-icons/fa';  
 
@@ -26,8 +26,6 @@ const NavigateToMyPlants=()=>{    navigate(`/MyPlants`);}
   disableGutters={false}
    sx={{position: 'relative', padding: '20px', paddingTop: '70px'
    }}
- // fixed={true}
- // style={{ color: '#80ada7', backgroundColor: 'rgba(128, 173, 167, 0.3)' }}
 >
   <Paper
     elevation={3}

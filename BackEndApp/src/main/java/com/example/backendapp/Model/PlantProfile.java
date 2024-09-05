@@ -1,33 +1,45 @@
 package com.example.backendapp.Model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@Table(name="plant_profile")
 public class PlantProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="profile_id")
     private Integer profileId;
+    @Column(name="name")
     private String name;
-//    @OneToOne
-//    @JoinColumn(name = "plant_id", referencedColumnName = "plantId")
-//    private Plant plant;
-    private Integer plant_id;
+    @Column(name="plant_id")
+    private Integer plantId;
+    @Column(name="location")
     private String location;
+    @Column(name="last_watered")
     private Timestamp lastWatered;
+    @Column(name="soil_moisture")
     private Double soilMoisture;
+    @Column(name="light_level")
     private Double lightLevel;
+    @Column(name="temperature")
     private Double temperature;
+    @Column(name="humidity")
     private Double humidity;
+    @Column(name="user_id")
     private Integer user_id;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @Column(name="image")
+    @Lob
+    private String image;
+
 }

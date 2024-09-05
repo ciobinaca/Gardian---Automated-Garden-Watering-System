@@ -16,8 +16,6 @@ public class Plant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer plantId;
-
-    //@Column(nullable = false)
     private String name;
     private String lightRequirements;
     private Double temperatureMin;
@@ -26,7 +24,6 @@ public class Plant {
     private Double optimalSoilMoistureMin;
     private Double optimalSoilMoistureMax;
     private String soilType;
+    private String image;
 
-//    @OneToOne(mappedBy = "plant", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<PlantProfile> plantProfiles;
 }

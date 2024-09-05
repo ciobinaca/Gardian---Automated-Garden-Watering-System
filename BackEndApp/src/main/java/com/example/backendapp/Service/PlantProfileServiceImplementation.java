@@ -14,6 +14,11 @@ public class PlantProfileServiceImplementation implements PlantProfileService{
     private final PlantProfileRepository plantProfileRepository;
 
     @Override
+    public PlantProfile fetchPlantProfileById(Long plantProfileId) {
+        return plantProfileRepository.findById(plantProfileId).get();
+    }
+
+    @Override
     public PlantProfile createPlantProfile(PlantProfile plantProfile) {
         return plantProfileRepository.save(plantProfile);
     }
